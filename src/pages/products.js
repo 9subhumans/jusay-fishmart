@@ -11,7 +11,18 @@ const ProductsPage = () => {
 
   useEffect(() => {
     // Fetch data from API or database
-    const data = [      {        id: 1,        name: "Product 1",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 10.99,        image: "product1.jpg",      },      {        id: 2,        name: "Product 2",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 25.99,        image: "product2.jpg",      },      {        id: 3,        name: "Product 3",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 12.99,        image: "product3.jpg",      },      {        id: 4,        name: "Product 4",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 8.99,        image: "product4.jpg",      },      {        id: 5,        name: "Product 5",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 14.99,        image: "product5.jpg",      },      {        id: 6,        name: "Product 6",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 19.99,        image: "product6.jpg",      },      {        id: 7,        name: "Product 7",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 6.99,        image: "product7.jpg",      },      {        id: 8,        name: "Product 8",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 9.99,        image: "product8.jpg",      },      {        id: 9,        name: "Product 9",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 16.99,        image: "product9.jpg",      },      {        id: 10,        name: "Product 10",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 22.99,        image: "product10.jpg",      },      {        id: 11,        name: "Product 11",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 13.99,        image: "product11.jpg",      },      {        id: 12,        name: "Product 12",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 18.99,        image: "product12.jpg",      },    ];
+    const data = [      {        id: 1,        name: "Product 1",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 10.99,       image: "prodcut1.jpg",      },
+                        {        id: 2,        name: "Product 2",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 25.99,       image: "product2.jpg",      },      
+                        {        id: 3,        name: "Product 3",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 12.99,       image: "product3.jpg",      },      
+                        {        id: 4,        name: "Product 4",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 8.99,        image: "product4.jpg",      },      
+                        {        id: 5,        name: "Product 5",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 14.99,       image: "product5.jpg",      },      
+                        {        id: 6,        name: "Product 6",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 19.99,       image: "product6.jpg",      },      
+                        {        id: 7,        name: "Product 7",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 6.99,        image: "product7.jpg",      },      
+                        {        id: 8,        name: "Product 8",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 9.99,        image: "product8.jpg",      },      
+                        {        id: 9,        name: "Product 9",        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 16.99,       image: "product9.jpg",      },      
+                        {        id: 10,       name: "Product 10",       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 22.99,       image: "product10.jpg",     },      
+                        {        id: 11,       name: "Product 11",       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 13.99,       image: "product11.jpg",     },      
+                        {        id: 12,       name: "Product 12",       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",        price: 18.99,       image: "product12.jpg",     },    ];
 
     setProducts(data);
   }, []);
@@ -93,7 +104,7 @@ const ProductsPage = () => {
       <Row>
         {
           products.map((p) => (
-            <Col key={p.id} xs={12} md={4} lg={3}>
+            <Col key={p.id} xs={12} md={6} lg={2}>
               <Card className="my-3">
               <Card.Img variant="top" src="images/coffee.jpg" />
               <Card.Body>
