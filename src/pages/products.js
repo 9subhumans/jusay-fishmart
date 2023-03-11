@@ -24,7 +24,7 @@ const ProductsPage = () => {
     <React.Fragment>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">Jusay's Fishmart</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto justify-content-between w-100">
@@ -56,8 +56,8 @@ const ProductsPage = () => {
                 <Card className="my-3">
                   <Card.Body>
                     <Card.Title>{p.name}</Card.Title>
-                    <Card.Text>{p.description}</Card.Text>
-                    <Card.Text>$1.00</Card.Text>
+                    <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
+                    <Card.Text className="pt-3  ">{p.quantity} {p.unit} = {p.price}</Card.Text>
                     <Button variant="primary" className="mr-2">
                       Add to cart
                     </Button>

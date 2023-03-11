@@ -1,4 +1,4 @@
-CREATE DATABASE productsdb IF NOT EXISTS;
+
 
 USE jusay_fishport_db;
 
@@ -6,16 +6,10 @@ CREATE TABLE product(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(200),
   description VARCHAR(400),
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE stockUnit(
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  productId INT,
-  unit VARCHAR(200),
-  qty INT,
   price DECIMAL,
-  FOREIGN KEY (productId) REFERENCES product(id)
+  unit VARCHAR(200),
+  quantity INT,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user(

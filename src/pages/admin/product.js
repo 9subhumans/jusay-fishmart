@@ -11,10 +11,18 @@ function ProductForm() {
     
     const name = document.querySelector('[name=productName]').value;
     const description = document.querySelector('[name=productDescription]').value;
+    const price = document.querySelector('[name=productPrice]').value;
+    const unit = document.querySelector('[name=productUnit]').value;
+    const quantity = document.querySelector('[name=productQuantity').value;
+
 
     const response = await axios.post('/api/products', {
       name,
-      description
+      description,
+      price,
+      unit,
+      quantity  
+
     });
   }
 
@@ -28,8 +36,24 @@ function ProductForm() {
               <Form.Control type="text" name="productName" />
             </Form.Group>
             <Form.Group className="mb-3">
+            <Form.Label>Unit</Form.Label>
+              <Form.Select name='productUnit'>
+                <option value='KG'>Per Kilo</option>
+                <option value='PC'>By Piece</option>
+                <option value='BK'>Bucket</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+            <Form.Label>Quantity</Form.Label>
+            <Form.Control type="number" name="productQuantity" />
+          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Price</Form.Label>
+              <Form.Control type="money" name="productPrice"  />
+            </Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Product Description</Form.Label>
-              <Form.Control as="textarea" name="productDescription" rows={3} />
+              <Form.Control as="textarea" name="productDescription"  />
             </Form.Group>
             <div className="d-flex justify-content-end">
               <Button type="submit">

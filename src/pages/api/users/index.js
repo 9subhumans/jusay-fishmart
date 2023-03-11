@@ -4,17 +4,17 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       console.log(req);
-      return await getProducts(req, res);
+      return await getuser(req, res);
     case "POST":
-      return await saveProduct(req, res);
+      return await saveUser(req, res);
     default:
       return res.status(400).send("Method not allowed");
   }
 }
 
-const getProducts = async (req, res) => {
+const getUser = async (req, res) => {
   try {
-    const results = await pool.query("SELECT * FROM product");
+    const results = await pool.query("SELECT * FROM user");
     return res.status(200).json(results);
   } catch (error) {
     console.log(error);
@@ -22,16 +22,19 @@ const getProducts = async (req, res) => {
   }
 };
 
-const saveProduct = async (req, res) => {
+const saveUser = async (req, res) => {
   try {
-    const { name, description, price, unit, quantity } = req.body;
+    const { name, userName, firstName, lastName, number, email, password, gender, phone, address, province, street, city, country, postalCode, userType } = req.body;
 
-    const result = await pool.query("INSERT INTO product SET ?", {
-      name,
-      description,
-      price,
-      unit,
-      quantity
+    const result = await pool.query("INSERT INTO user SET ?", {
+      fName,
+      lName,
+      userName,
+      email,
+      passwword,
+      cPassword,
+      gender,
+      phoneNumber
 
     });
 
