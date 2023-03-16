@@ -3,8 +3,7 @@ import { pool } from "config/db";
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
-      console.log(req);
-      return await getuser(req, res);
+      return await getUsers(req, res);
     case "POST":
       return await saveUser(req, res);
     default:
@@ -12,7 +11,7 @@ export default async function handler(req, res) {
   }
 }
 
-const getUser = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
     const results = await pool.query("SELECT * FROM user");
     return res.status(200).json(results);
@@ -24,18 +23,25 @@ const getUser = async (req, res) => {
 
 const saveUser = async (req, res) => {
   try {
-    const { name, userName, firstName, lastName, number, email, password, gender, phone, address, province, street, city, country, postalCode, userType } = req.body;
+    const { name, userName, firstName, lastName, number, email, password, gender, phone, address, provice, street, city, country, postalCode, userType } = req.body;
 
     const result = await pool.query("INSERT INTO user SET ?", {
-      fName,
-      lName,
+      name: firstName + ' ' +  lastName,
       userName,
+      firstName,
+      lastName,
       email,
-      passwword,
-      cPassword,
-      gender,
-      phoneNumber
-
+      password,
+      gender: "",
+      phone: "",
+      address: "",
+      provice: "",
+      street: "",
+      city: "",
+      country: "",
+      postalCode: "",
+      userType: 2,
+      number: '',
     });
 
     return res.status(200).json({ ...req.body, id: result.insertId });

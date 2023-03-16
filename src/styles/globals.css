@@ -105,3 +105,8 @@ a {
     color-scheme: dark;
   }
 }
+
+input.input-error,
+select.input-error{
+  border-color: #fc8181;
+}
