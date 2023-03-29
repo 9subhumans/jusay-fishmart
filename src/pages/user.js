@@ -180,7 +180,7 @@ function AccountForm() {
                   }
                 </Form.Group>
                 <div className="d-flex justify-content-end">
-                  <Button type="button" onClick={submitForm}>
+                  <Button href="./products" type="button" onClick={submitForm}>
                     Submit
                   </Button>
                 </div>

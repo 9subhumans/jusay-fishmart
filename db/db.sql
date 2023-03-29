@@ -4,21 +4,25 @@ USE jusay_fishport_db;
 
 CREATE TABLE product(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  image blob,
   name VARCHAR(200),
   description VARCHAR(400),
   price DECIMAL,
   unit VARCHAR(200),
   quantity INT,
+  currency1 VARCHAR(1),
+  currency2 VARCHAR(1),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 CREATE TABLE stockuniti(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   unit VARCHAR(200),
   qty INT,
-  price DECIMAL
+  price DECIMAL,
   createdAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 CREATE TABLE user(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

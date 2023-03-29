@@ -23,11 +23,11 @@ const getUsers = async (req, res) => {
 
 const saveUser = async (req, res) => {
   try {
-    const { name, userName, firstName, lastName, number, email, password, gender, phone, address, provice, street, city, country, postalCode, userType } = req.body;
+    const { name, username, firstName, lastName, number, email, password, gender, phone, address, provice, street, city, country, postalCode, userType } = req.body;
 
     const result = await pool.query("INSERT INTO user SET ?", {
       name: firstName + ' ' +  lastName,
-      userName,
+      username,
       firstName,
       lastName,
       email,

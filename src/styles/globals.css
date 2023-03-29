@@ -110,3 +110,7 @@ input.input-error,
 select.input-error{
   border-color: #fc8181;
 }
+
+.navbar-aqua {
+  background: linear-gradient(to right, #00c6fb, #005bea);
+}

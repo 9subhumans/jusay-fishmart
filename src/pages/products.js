@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Container, Row, Col, Card, Form, Button, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHippo } from '@fortawesome/free-solid-svg-icons'
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { Nav, Navbar, NavDropdown, InputGroup } from 'react-bootstrap';
+
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -22,26 +21,26 @@ const ProductsPage = () => {
 
   return (
     <React.Fragment>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="navbar-aqua"  expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Jusay's Fishmart</Navbar.Brand>
+          <Navbar.Brand href="./Introduction">Jusay's Fishmart</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto justify-content-between w-100">
-              <Form>
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form className="d-flex">
+                <InputGroup>
+                  <InputGroup.Text><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
                   <Form.Control type="search" placeholder="Search" />
-                </Form.Group>
+                </InputGroup>
               </Form>
-              <NavDropdown title={<FontAwesomeIcon icon={faHippo} />} id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown title={<FontAwesomeIcon icon={faBars} />} id="basic-nav-dropdown">
+                <NavDropdown.Item href="#">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#">Settings</NavDropdown.Item>
+                <NavDropdown.Item href="./admin/product">Add Product</NavDropdown.Item>
+                <NavDropdown.Item href="#">Add Product</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                <NavDropdown.Item href="#">
+                  Sign Out
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
@@ -58,7 +57,7 @@ const ProductsPage = () => {
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
                     <Card.Text className="pt-3  ">{p.quantity} {p.unit} = {p.price}</Card.Text>
-                    <Button variant="primary" className="mr-2">
+                    <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
                       Add to cart
                     </Button>
                     <i className="far fa-heart mr-2"></i>
