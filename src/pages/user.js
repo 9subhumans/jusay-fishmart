@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -43,6 +44,8 @@ function AccountForm() {
     } catch (error) {
       console.log(error);
     }
+
+    Router.push('/products');
     return false;
   };
   
@@ -180,7 +183,7 @@ function AccountForm() {
                   }
                 </Form.Group>
                 <div className="d-flex justify-content-end">
-                  <Button href="./products" type="button" onClick={submitForm}>
+                  <Button  type="button" onClick={submitForm}>
                     Submit
                   </Button>
                 </div>
