@@ -10,8 +10,6 @@ CREATE TABLE product(
   price DECIMAL,
   unit VARCHAR(200),
   quantity INT,
-  currency1 VARCHAR(1),
-  currency2 VARCHAR(1),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

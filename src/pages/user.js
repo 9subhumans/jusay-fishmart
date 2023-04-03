@@ -74,7 +74,7 @@ function AccountForm() {
     }) => (
       <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }} >
         <Card>
-          <Card.Body>
+          <Card.Body className="bg-gradient-1">
             <Form noValidate>
               <Row className="mb-3" style={{width: '38rem' }}>
                 {console.log(errors)}

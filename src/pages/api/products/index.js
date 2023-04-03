@@ -24,11 +24,11 @@ const getProducts = async (req, res) => {
 
 const saveProduct = async (req, res) => {
   try {
-    const { iamge, name, description, price, unit, quantity } = req.body;
+    const { image, name, description, price, unit, quantity } = req.body;  
 
     const result = await pool.query("INSERT INTO product SET ?", {
 
-      image: "",
+      image,
       name,
       description,
       price,

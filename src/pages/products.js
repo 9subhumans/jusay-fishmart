@@ -19,6 +19,8 @@ const ProductsPage = () => {
     execute();
   }, []);
 
+
+
   return (
     <React.Fragment>
       <Navbar className="navbar-aqua" expand="lg">
@@ -33,20 +35,20 @@ const ProductsPage = () => {
                   <Form.Control type="search" placeholder="Search" />
                 </InputGroup>
               </Form>
-              <NavDropdown title={<FontAwesomeIcon icon={faBars} />} id="basic-nav-dropdown">
-                <NavDropdown.Item href="#">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#">Settings</NavDropdown.Item>
-                <NavDropdown.Item href="./admin/product">Add Product</NavDropdown.Item>
-                <NavDropdown.Item href="#">Add Product</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">Sign Out</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center ms-auto ">
               <Nav.Link href="#">
                 <FaShoppingCart /> Cart
               </Nav.Link>
             </div>
+              <NavDropdown title={<FontAwesomeIcon icon={faBars} />} id="basic-nav-dropdown">
+                <NavDropdown.Item href="#">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#">Settings</NavDropdown.Item>
+                <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
+                <NavDropdown.Item href="./admin/product">Add Product</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#">Sign Out</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -57,9 +59,10 @@ const ProductsPage = () => {
               <Col key={p.id} xs={4} >
                 <Card className="my-3">
                   <Card.Body>
+                    <Card.Img src="{p.image}" />
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
-                    <Card.Text className="pt-3  ">{p.quantity} {p.unit} = {p.price}</Card.Text>
+                    <Card.Text className="pt-3  ">{p.quantity}{p.unit} = ₱{p.price}.00</Card.Text>
                     <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
                       Add to cart
                     </Button>
