@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import NavigationBar from '@/components/NavigationBar';
 
 export default function Document() {
   return (
@@ -12,6 +13,7 @@ export default function Document() {
         />
       </Head>
       <body>
+        <NavigationBar />
         <Main />
         <NextScript />
       </body>

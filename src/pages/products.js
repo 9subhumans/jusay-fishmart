@@ -19,39 +19,8 @@ const ProductsPage = () => {
     execute();
   }, []);
 
-
-
   return (
     <React.Fragment>
-      <Navbar className="navbar-aqua" expand="lg">
-        <Container>
-          <Navbar.Brand href="./Introduction">Jusay's Fishmart</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto justify-content-between w-100">
-              <Form className="d-flex">
-                <InputGroup>
-                  <InputGroup.Text><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
-                  <Form.Control type="search" placeholder="Search" />
-                </InputGroup>
-              </Form>
-              <div className="d-flex align-items-center ms-auto ">
-              <Nav.Link href="#">
-                <FaShoppingCart /> Cart
-              </Nav.Link>
-            </div>
-              <NavDropdown title={<FontAwesomeIcon icon={faBars} />} id="basic-nav-dropdown">
-                <NavDropdown.Item href="#">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#">Settings</NavDropdown.Item>
-                <NavDropdown.Item href="#">Contact Us</NavDropdown.Item>
-                <NavDropdown.Item href="./admin/product">Add Product</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">Sign Out</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
       <Container className="my-5">
         <Row>
           {

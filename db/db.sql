@@ -4,7 +4,7 @@ USE jusay_fishport_db;
 
 CREATE TABLE product(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  image blob,
+  image VARCHAR(200),
   name VARCHAR(200),
   description VARCHAR(400),
   price DECIMAL,

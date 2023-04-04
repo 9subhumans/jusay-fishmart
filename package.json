@@ -25,10 +25,13 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
+    "react-drag-drop-files": "^2.3.9",
     "react-hook-form": "^7.43.5",
     "react-icons": "^4.8.0",
     "react-images-uploading": "^3.1.7",
     "react-router-dom": "^6.9.0",
+    "react-svg": "^16.1.7",
+    "sass": "^1.60.0",
     "serverless-mysql": "^1.5.4",
     "yup": "^1.0.2"
   }
