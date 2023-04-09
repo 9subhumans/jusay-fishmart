@@ -112,6 +112,10 @@ select.input-error{
 }
 
 .navbar-aqua {
-  background: linear-gradient(to right, #00c6fb, #005bea);
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
+.bg-gradient-1{
+  background: rgb(63,94,251);
+  background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
