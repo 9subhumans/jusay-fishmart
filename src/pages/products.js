@@ -59,7 +59,7 @@ const ProductsPage = () => {
                   <Card.Body>
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
-                    <Card.Text className="pt-3  ">{p.quantity} {p.unit} = {p.price}</Card.Text>
+                    <Card.Text className="pt-3  ">{p.quantity}{p.unit} = {p.price}.00</Card.Text>
                     <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
                       Add to cart
                     </Button>

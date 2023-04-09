@@ -38,9 +38,9 @@ function ProductForm() {
             <Form.Group className="mb-3">
             <Form.Label>Unit</Form.Label>
               <Form.Select name='productUnit'>
-                <option value='KG'>Per Kilo</option>
-                <option value='PC'>By Piece</option>
-                <option value='BK'>Bucket</option>
+                <option value='kg'>Per Kilo</option>
+                <option value='pc'>By Piece</option>
+                <option value='Bucket'>Bucket</option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
