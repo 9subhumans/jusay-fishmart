@@ -25,9 +25,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  name: '',
+  name: "",
   image: '',
-  unit: 'KG',
+  unit: '',
   price: 0,
   quantity: 0,
   description: '',

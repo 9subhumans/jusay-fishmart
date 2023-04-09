@@ -1,75 +1,72 @@
-import React from "react";
-import { Container, Card, Button, Navbar, Nav } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa";
-import { Accordion } from "react-bootstrap";
+import { Accordion, Container } from "react-bootstrap";
+import Navbar from "../components/NavigationBar";
 
-const FAQPage = () => {
+function FAQPage() {
   return (
     <>
-      <Navbar bg="transparent" expand="lg" className="navbar-aqua">
-        <Container>
-          <Navbar.Brand href="#">Jusay Fishmart</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="./products">Shop</Nav.Link>
-              <Nav.Link href="./AboutUs">About Us</Nav.Link>
-              <Nav.Link href="#">Contact Us</Nav.Link>
-              <Nav.Link href="#">FAQ's</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="./LogIn">Log in</Nav.Link>
-              <Nav.Link href="./user">Sign Up</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
       <Container className="my-5">
-        <h1 className="mb-4">Frequently Asked Questions</h1>
-        <Accordion>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                How can I order products from Jusay Fishmart?
-                <FaChevronDown className="ms-2" />
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                You can order products from Jusay Fishmart by visiting our website and adding items to your cart. Once you're ready to checkout, you can enter your shipping and payment information and complete your order.
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                What is the return policy for Jusay Fishmart?
-                <FaChevronDown className="ms-2" />
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>
-                We offer a 30-day return policy for all products purchased from Jusay Fishmart. If you're not satisfied with your purchase, you can return it for a full refund within 30 days of delivery.
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                How can I contact customer support?
-                <FaChevronDown className="ms-2" />
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="2">
-              <Card.Body>
-                You can contact customer support by emailing us at support@jusayfishmart.com or by calling us at 555-555-5555.
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
+        <h1 className="text-center">Frequently Asked Questions</h1>
+        <Accordion defaultActiveKey="0" flush>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              <FaChevronDown className="me-2" />
+              What is Jusay Fishmart?
+            </Accordion.Header>
+            <Accordion.Body>
+              Jusay Fishmart is an ecommerce platform that sells fresh and
+              quality seafood products delivered right to your doorstep.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>
+              <FaChevronDown className="me-2" />
+              Where do you get your products?
+            </Accordion.Header>
+            <Accordion.Body>
+              We source our products from trusted and reliable local suppliers
+              to ensure their quality and freshness.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>
+              <FaChevronDown className="me-2" />
+              How can I place an order?
+            </Accordion.Header>
+            <Accordion.Body>
+              You can place an order by creating an account on our website,
+              browsing our products, and adding them to your cart. You can then
+              proceed to checkout and provide your shipping and payment
+              information to complete your order.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="3">
+            <Accordion.Header>
+              <FaChevronDown className="me-2" />
+              What are your payment options?
+            </Accordion.Header>
+            <Accordion.Body>  
+              We accept payments through major credit cards such as Visa,
+              Mastercard and as through popular
+              payment gateways such as PayPal and GCash.
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="4">
+            <Accordion.Header>
+              <FaChevronDown className="me-2" />
+              What is your delivery policy?
+            </Accordion.Header>
+            <Accordion.Body>
+              We offer free delivery within the Cebu area for orders over Php
+              1,000. For orders below Php 1,000, a delivery fee of Php 100 will
+              be charged. For orders outside the Cebu area, additional fees may
+              apply.
+            </Accordion.Body>
+          </Accordion.Item>
         </Accordion>
       </Container>
     </>
   );
-};
+}
 
 export default FAQPage;

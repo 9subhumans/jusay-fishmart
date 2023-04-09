@@ -6,6 +6,7 @@ import { faSearch, faBars  } from '@fortawesome/free-solid-svg-icons';
 import { Nav, Navbar, NavDropdown, InputGroup } from 'react-bootstrap';
 import { FaShoppingCart } from 'react-icons/fa';
 
+
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
 
@@ -17,7 +18,8 @@ const ProductsPage = () => {
     }
 
     execute();
-  }, []);
+  },
+  );
 
   return (
     <React.Fragment>
@@ -28,7 +30,9 @@ const ProductsPage = () => {
               <Col key={p.id} xs={4} >
                 <Card className="my-3">
                   <Card.Body>
-                    <Card.Img src="{p.image}" />
+                    <Card.Img  
+                    src={p.image}
+                     />
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
                     <Card.Text className="pt-3  ">{p.quantity}{p.unit} = ₱{p.price}.00</Card.Text>

@@ -2,9 +2,9 @@ import mysql from "serverless-mysql";
 
 const pool = mysql({
   config: {
-    host: "localhost",
+    host: "Localhost",
     user: "root",
-    password: "root",
+    password: "password",
     port: 3306,
     database: "jusay_fishport_db",
   },

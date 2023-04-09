@@ -15,7 +15,7 @@ function NavigationBar() {
   return (
     <Navbar className="navbar navigationbar" expand="lg">
       <Container>
-        <Link href="/introduction">
+        <Link href="/Introduction">
           <Navbar.Brand>
             <Image
               width={75}
@@ -29,19 +29,38 @@ function NavigationBar() {
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
-          <Nav className="me-auto justify-content-between w-100">
-            <div className="d-flex align-items-center">
-              <Link href="/products">
-                Shop
-              </Link>
-            </div>
-            <div className="d-flex align-items-center ms-auto">
-              <Link  as={Nav.Link} href="/cart">
-                <FaShoppingCart /> Cart
-              </Link>
-            </div>
-          </Nav>
-        </Navbar.Collapse>
+    <Nav className="me-auto w-100">
+      <div className="d-flex align-items-center">
+        <Link href="/products" className="me-3">
+          Shop
+        </Link>
+        <Link href="./about" className="me-3">
+          About Us
+        </Link>
+        <Link href="./contact" className="me-3">
+          Contact Us
+        </Link>
+        <Link href="faq" className="me-3">
+          FAQ's
+        </Link>
+      </div>
+      <div className="d-flex align-items-center ms-auto">
+        <Nav className="me-3">
+          <Link href="/cart" as={Nav.Link}>
+            <FaShoppingCart /> Cart
+          </Link>
+        </Nav>
+        {/* <Nav className="ms-3">
+          <Link href="./LogIn" className="me-3">
+            Log in
+          </Link>
+          <Link href="./user" className="me-3">
+            Sign Up
+          </Link>
+        </Nav> */}
+      </div>
+    </Nav>
+  </Navbar.Collapse>
       </Container>
     </Navbar>
   )

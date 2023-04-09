@@ -5,24 +5,6 @@ import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
 const AboutUs = () => {
   return (
     <div>
-    <Navbar bg="transparent" expand="lg" className="navbar-aqua">
-        <Container>
-          <Navbar.Brand href="#">Jusay Fishmart</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="./products">Shop</Nav.Link>
-              <Nav.Link href="./AboutUs">About Us</Nav.Link>
-              <Nav.Link href="./ContactUs">Contact Us</Nav.Link>
-              <Nav.Link href="./FAQ'S">FAQ's</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="./LogIn">Log in</Nav.Link>
-              <Nav.Link href="./user">Sign Up</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
     <Container className="py-5">
       <Row>
         <Col md={6}>
