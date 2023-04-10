@@ -18,8 +18,7 @@ const ProductsPage = () => {
     }
 
     execute();
-  },
-  );
+  }, []);
 
   return (
     <React.Fragment>

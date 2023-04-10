@@ -17,7 +17,7 @@ const getProducts = async (req, res) => {
     const result = await pool.query("SELECT * FROM product");
     const products = result.map((item) => {
       const imageBuffer = item.image;
-      const image = `data:image/jpeg;base64,${imageBuffer.toString('base64')}`;
+      const image = imageBuffer.toString();
       return ({
         ...item,
         image
