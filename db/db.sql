@@ -3,7 +3,7 @@
 
 CREATE TABLE product(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  image VARCHAR(MAX),
+  image blob,
   name VARCHAR(200),
   description VARCHAR(400),
   price DECIMAL,

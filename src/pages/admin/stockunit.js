@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {formik, Field} from 'formik';
 
 function ProductForm() {
   const [products, setProducts] = useState([]);
@@ -50,10 +51,10 @@ function ProductForm() {
                 }
               </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Unit Name</Form.Label>
-            <Form.Control type="text" name="unitName" />
-          </Form.Group>
+          <Form.Label>Unit</Form.Label>
+                      <option value='KG'>Per Kilo</option>
+                      <option value='PC'>By Piece</option>
+                      <option value='BK'>Bucket</option>
           <Form.Group className="mb-3">
             <Form.Label>Quantity</Form.Label>
             <Form.Control type="number" name="productQuantity" />
