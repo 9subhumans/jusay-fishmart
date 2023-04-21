@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Container, Row, Col, Card, Form, Button, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBars  } from '@fortawesome/free-solid-svg-icons';
@@ -16,37 +18,43 @@ const ProductsPage = () => {
 
       setProducts(response.data);
     }
-
     execute();
   },
-  []); 
+  []);
 
   return (
     <React.Fragment>
       <Container className="my-5">
-        <Row>
+        <div className="products-container">
           {
             products.map((p) => (
-              <Col key={p.id} xs={3} >
-              <Card className="my-3 custom-card"> {/* add custom class */}
+              <Card key={p.id} className="my-3 product-card">
                 <Card.Body>
-                  <Card.Img  
-                  src={p.image}
+                   <Image
+                      src={p.image}
+                      height={200}
+                      width={320}
+                      alt={p.image}
+                      className="card-img"
                    />
-                  <Card.Title>{p.name}</Card.Title>
-                  <Card.Body className="pt-3" style={{fontSize: 15}}>{p.description}</Card.Body>
+                  <Card.Title>
+                    <Link href={`product/${p.id}`}>
+                      {p.name}
+                    </Link>
+                  </Card.Title>
+                  <Card.Body className="p-0" style={{fontSize: 15}}>{p.description}</Card.Body>
                   <Card.Text className="pt-3  ">{p.quantity}{p.unit} = ₱{p.price}.00</Card.Text>
-                  <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
-                    Add to cart
-                  </Button>
-                  <i className="far fa-heart mr-2"></i>
-                  <i className="far fa-bookmark"></i>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
+                      Add to cart
+                    </Button>
+                    <i class="bi bi-heart" />
+                  </div>
                 </Card.Body>
               </Card>
-            </Col>
             ))
           }
-        </Row>
+        </div>
       </Container>
     </React.Fragment>
   );
