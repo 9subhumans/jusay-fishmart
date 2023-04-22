@@ -11,6 +11,5 @@ import '@/styles/pages/products.css';
 import ProductForm from './products';
 
 export default function App({ Component, pageProps }) {
-  console.log(112, 113, process.env);
   return <Component {...pageProps} />
 }
