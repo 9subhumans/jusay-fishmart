@@ -1,0 +1,6 @@
+DB_HOST=jrdev-instance.cmucjhykbahz.ap-southeast-1.rds.amazonaws.com
+DB_USER=admin
+DB_PASS=jovanreyesdev
+DB_PORT=3306
+DB_NAME=jusay_fishport_db
+API_URL=http://localhost:3000/api/

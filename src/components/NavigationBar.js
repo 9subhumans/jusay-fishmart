@@ -41,13 +41,13 @@ function NavigationBar() {
           Contact Us
         </Link>
         <Link href="faq" className="me-3">
-          FAQ's
+          FAQ&apos;s
         </Link>
       </div>
       <div className="d-flex align-items-center ms-auto">
         <Nav className="me-3">
           <Link href="/cart" as={Nav.Link}>
-            <FaShoppingCart /> Cart
+            <i class="bi bi-cart4" /> Cart
           </Link>
         </Nav>
         {/* <Nav className="ms-3">

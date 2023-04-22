@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 const OrderDetails = () => {
@@ -47,10 +48,12 @@ const OrderDetails = () => {
               {cartItems.map((item) => (
                 <tr key={item.id}>
                   <td>
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.name}
                       style={{ width: '100px' }}
+                      width={100}
+                      height={100}
                     />
                     <span className="ml-3">{item.name}</span>
                   </td>
