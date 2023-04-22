@@ -9,7 +9,6 @@ const UNITS = {
 };
 
 const SingleProductPage = ({ data }) => {
-  console.log(data);
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityDecrease = () => {

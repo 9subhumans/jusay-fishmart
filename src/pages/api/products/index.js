@@ -23,8 +23,6 @@ const getProducts = async (req, res) => {
       })
     });
 
-    console.log(products);
-
     return res.status(200).json(products);
   } catch (error) {
     console.log(error);

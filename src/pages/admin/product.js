@@ -39,7 +39,6 @@ const AddProductForm = () => {
   }
 
   const handleSubmit = async (values) => {
-    console.log(values);
     const response = await axios.post('/api/products', values);
   }
 
