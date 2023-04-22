@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
 
 
@@ -14,7 +15,13 @@ const AboutUs = () => {
           <p>Thank you for choosing Jusay Fishmart!</p>
         </Col>
         <Col md={6}>
-          <img src="https://dummyimage.com/600x400/000/fff" alt="About Us" className="img-fluid" />
+          <Image
+            alt="About Us"
+            className="img-fluid"
+            src="https://dummyimage.com/600x400/000/fff"
+            width={100}
+            height={100}
+          />
         </Col>
       </Row>
     </Container>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, document } from 'react';
-import { Col, Button, Row, Container, Card, Form, App } from "react-bootstrap";
+import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import ReactDOM from 'react-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,13 +33,6 @@ export default function Login() {
   function login(){
     console.warn(email, password)
   }
-  ReactDOM.render(
-    <React.StrictMode>
-      <App />
-      <ToastContainer />
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
 
   return (
     <div>
@@ -93,7 +86,7 @@ export default function Login() {
                     </Form>
                     <div className="mt-3">
                       <p className="mb-0  text-center">
-                        Don't have an account?{" "}
+                        Don&apos;t have an account?{" "}
                         <a href="./user" className="text-primary fw-bold">
                           Sign Up
                         </a>
