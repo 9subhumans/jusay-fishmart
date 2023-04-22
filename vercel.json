@@ -1,8 +1,0 @@
-{
-  "functions": {
-    "src/pages/api/*.js": {
-      "memory": 512,
-      "maxDuration": 30
-    }
-  }
-}
