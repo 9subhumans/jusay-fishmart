@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Router from 'next/router';
+import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
@@ -9,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { toBase64 } from '@/utils/file';
+import { toast, ToastContainer } from 'react-toastify';
 
 const fileTypes = ["JPG", "PNG", "WEBP"];
 const moneyRegExp = /^\$?[0-9]+(\.[0-9][0-9])?$/;
@@ -25,9 +28,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  name: "",
+  name: '',
   image: '',
-  unit: '',
+  unit: 'KG',
   price: 0,
   quantity: 0,
   description: '',
@@ -40,6 +43,23 @@ const AddProductForm = () => {
 
   const handleSubmit = async (values) => {
     const response = await axios.post('/api/products', values);
+    
+    if (response.statusText === 'OK') {
+      toast.success('Product successfully created', {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      setTimeout(() => {
+        Router.push('/admin/products');
+      }, (1000));
+    }
   }
 
   return (
@@ -162,14 +182,32 @@ const AddProductForm = () => {
                   </div>
                 </div>
 
+                <div className="d-flex justify-content-between">
+                <Link href="/admin/products">
+                  <Button variant="default">
+                    Back to Products
+                  </Button>
+                </Link>
                 <Button type="submit" disabled={!formik.isValid}>
                   Submit
                 </Button>
+                </div>
               </FormikForm>
             )}
           </Formik>
         </Card.Body>
       </Card>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="light"
+      />
     </Container>
   )
 }

@@ -42,7 +42,15 @@ const ProductsPage = () => {
                       {p.name}
                     </Link>
                   </Card.Title>
-                  <Card.Body className="p-0" style={{fontSize: 15}}>{p.description}</Card.Body>
+                  <Card.Body className="p-0" style={{fontSize: 15}}>
+                      {
+                        p.description
+                        .split(' ')
+                        .slice(0, 20).join(' ')
+                      }
+                      ...&nbsp;
+                      <Link style={{ color: 'blue' }} href={`product/${p.id}`}>See more</Link>
+                    </Card.Body>
                   <Card.Text className="pt-3  ">{p.quantity}{p.unit} = ₱{p.price}.00</Card.Text>
                   <div className="d-flex align-items-center justify-content-between">
                     <Button href="src/pages/admin/orderdetails.js" variant="primary" className="mr-2">
