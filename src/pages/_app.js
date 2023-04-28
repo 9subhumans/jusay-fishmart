@@ -12,6 +12,7 @@ import '@/styles/pages/products.css';
 // contexts
 import { CartProvider } from '@/contexts/CartContext';
 import { ToastProvider } from '@/contexts/ToastContext';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 import ProductForm from './products';
 
@@ -20,7 +21,9 @@ export default function App({ Component, pageProps }) {
   return (
     <CartProvider>
       <ToastProvider>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </ToastProvider>
     </CartProvider>
   )
