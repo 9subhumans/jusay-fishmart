@@ -1,10 +1,11 @@
 import { FaChevronDown } from "react-icons/fa";
 import { Accordion, Container } from "react-bootstrap";
-import Navbar from "../components/NavigationBar";
+import { NavigationBar } from '@/components/NavigationBar'
 
 function FAQPage() {
   return (
     <>
+    <NavigationBar />
       <Container className="my-5">
         <h1 className="text-center">Frequently Asked Questions</h1>
         <Accordion defaultActiveKey="0" flush>

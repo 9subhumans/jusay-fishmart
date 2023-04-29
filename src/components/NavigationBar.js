@@ -19,7 +19,7 @@ export function NavigationBar() {
   return (
     <Navbar className="navbar navigationbar" expand="lg">
       <Container>
-        <Link href="/Introduction">
+        <Link href="/introduction">
           <Navbar.Brand>
             <Image
               width={75}

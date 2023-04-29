@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { NavigationBar } from '@/components/NavigationBar'
 
 function Introduction() {
   return (
@@ -12,6 +13,7 @@ function Introduction() {
       <Head>
         <title>Jusay Fishmart | Introduction</title>
       </Head>
+      <NavigationBar /> 
       <Container className="py-5">
         <Row className="justify-content-center align-items-center">
           <Col md={6} className="text-center">

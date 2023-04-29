@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
-
+import { NavigationBar } from '@/components/NavigationBar'
 
 const AboutUs = () => {
   return (
     <div>
+      <NavigationBar />
     <Container className="py-5">
       <Row>
         <Col md={6}>
@@ -15,13 +16,6 @@ const AboutUs = () => {
           <p>Thank you for choosing Jusay Fishmart!</p>
         </Col>
         <Col md={6}>
-          <Image
-            alt="About Us"
-            className="img-fluid"
-            src="https://dummyimage.com/600x400/000/fff"
-            width={100}
-            height={100}
-          />
         </Col>
       </Row>
     </Container>
