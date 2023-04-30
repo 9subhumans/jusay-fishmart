@@ -26,9 +26,8 @@ export function NavigationBar() {
               height={45}
               alt="Fish Logo"
               className="navbar-logo"
-              src="/images/logo.png"
+              src="/images/logo2.png"
             />
-            Jusay&apos;s Fishmart
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

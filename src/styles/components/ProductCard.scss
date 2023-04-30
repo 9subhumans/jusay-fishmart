@@ -1,0 +1,43 @@
+.product-card {
+  color: #4E4E4E;
+  position: relative;
+  overflow: hidden;
+  
+  .price {
+    font-size: 1.5rem;
+
+    .symbol {
+      font-size: smaller;
+    }
+  }
+  
+  .card-img {
+    transform: scale(0.75);
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .quantity {
+      max-width: 3rem;
+      margin-right: 0.5rem;
+    }
+
+    .addbutton {
+      background: #45a9e3;
+      border-color: #45a9e3;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .button-container {
+      .quantity {
+        max-width: 3.5rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

@@ -12,10 +12,29 @@ function ProductCard({ item }) {
   const cart = useContext(CartContext);
   const toast = useContext(ToastContext);
   const [quantity, setQuantity] = useState(1);
+  const [mask, setMask] = useState('');
 
   const changeQuantity = (e) => {
-    setQuantity(e.target.value);
+    const input = event.target;
+    const value = parseInt(input.value);
+
+    if (isNaN(value) || value < 1) {
+      // setQuantity(1);
+    } else {
+      setQuantity(value);
+    }
   }
+
+  const handleEnter = (e) => {
+    setMask(quantity);
+    setQuantity('');
+  };
+
+  const handleBlur = (e) => {
+    if (e.target.value === '') {
+      setQuantity(mask);
+    }
+  };
 
   const addToCart = () => {
     cart.addItem({ ...item, quantity: Number(quantity) });
@@ -25,6 +44,11 @@ function ProductCard({ item }) {
 
   return (
     <Card key={item.id} className="my-3 product-card">
+      {
+        item.featured ? <div className="featured">
+          Featured
+        </div> : null
+      }
       <Card.Body>
           <Image
             src={item.image}
@@ -41,21 +65,27 @@ function ProductCard({ item }) {
             <i className="bi bi-heart" />
           </small>
         </Card.Title>
-        <Card.Text className="pt-3  ">₱{item.price}.00 per {item.quantity}{item.unit}</Card.Text>
-        <div className="d-flex align-items-center justify-content-between">
+        <Card.Text className="pt-3  ">
+          <span className="rubik price">
+            <span className="symbol">₱</span>
+            {item.price}.00</span> per {item.quantity}{item.unit}
+        </Card.Text>
+        <div className="button-container">
           <div className="d-flex align-items-center">
             <Form.Control
-              type="number"
+              type="text"
               value={quantity}
-              style={{ maxWidth: '4rem', marginRight: '0.5rem' }}
               onChange={changeQuantity}
+              onFocus={handleEnter}
+              onBlur={handleBlur}
+              className="quantity"
             />
             {item.unit}
           </div>
           <Button
             type="button"
             variant="primary"
-            className="mr-2"
+            className="addbutton mr-2"
             onClick={addToCart}
           >
             Add to cart
