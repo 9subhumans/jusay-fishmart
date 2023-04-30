@@ -10,6 +10,7 @@ import '@/styles/components/ProductCard.scss';
 import '@/styles/components/FilterBar.scss';
 import '@/styles/components/SortBar.scss';
 import '@/styles/components/Featured.scss';
+import '@/styles/components/Footer.scss';
 
 // page styles
 import '@/styles/pages/products.css';

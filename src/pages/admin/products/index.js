@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from 'next/head';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -64,49 +65,54 @@ const ProductsTable = ({ products }) => {
     ));
 
   return (
-    <Container className="pt-5">
-      <Card>
-        <Card.Body>
-          <div className="d-flex justify-content-end mb-3">
-            <Link href="/admin/products/create">
-              <Button>
-                Create +
-              </Button>
-            </Link>
-          </div>
-          <Form.Control
-            type="text"
-            placeholder="Search products"
-            value={searchTerm}
-            onChange={handleSearch}
-            className="mb-5"
-          />
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th onClick={() => handleSort("id")}>ID</th>
-                <th onClick={() => handleSort("name")}>Name</th>
-                <th onClick={() => handleSort("price")}>Price</th>
-                <th onClick={() => handleSort("unit")}>Unit</th>
-                <th onClick={() => handleSort("quantity")}>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>{tableRows}</tbody>
-          </Table>
-          <Pagination>
-            {Array.from({ length: pageCount }).map((_, i) => (
-              <Pagination.Item
-                key={i}
-                active={i + 1 === currentPage}
-                onClick={() => handlePageChange(i + 1)}
-              >
-                {i + 1}
-              </Pagination.Item>
-            ))}
-          </Pagination>
-        </Card.Body>
-      </Card>
-    </Container>
+    <>
+      <Head>
+        <title>Products | Admin</title>
+      </Head>
+      <Container className="pt-5">
+        <Card>
+          <Card.Body>
+            <div className="d-flex justify-content-end mb-3">
+              <Link href="/admin/products/create">
+                <Button>
+                  Create +
+                </Button>
+              </Link>
+            </div>
+            <Form.Control
+              type="text"
+              placeholder="Search products"
+              value={searchTerm}
+              onChange={handleSearch}
+              className="mb-5"
+            />
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th onClick={() => handleSort("id")}>ID</th>
+                  <th onClick={() => handleSort("name")}>Name</th>
+                  <th onClick={() => handleSort("price")}>Price</th>
+                  <th onClick={() => handleSort("unit")}>Unit</th>
+                  <th onClick={() => handleSort("quantity")}>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>{tableRows}</tbody>
+            </Table>
+            <Pagination>
+              {Array.from({ length: pageCount }).map((_, i) => (
+                <Pagination.Item
+                  key={i}
+                  active={i + 1 === currentPage}
+                  onClick={() => handlePageChange(i + 1)}
+                >
+                  {i + 1}
+                </Pagination.Item>
+              ))}
+            </Pagination>
+          </Card.Body>
+        </Card>
+      </Container>
+    </>
   );
 };
 

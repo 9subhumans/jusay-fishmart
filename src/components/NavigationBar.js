@@ -51,7 +51,7 @@ export function NavigationBar() {
               <Nav className="me-3">
                 <Link href="/cart">
                   <i className="bi bi-cart4" /> Cart {
-                    cart.items.length ? <Badge bg="secondary">{cart.items.length}</Badge> : null
+                    cart.items.length ? <Badge>{cart.items.length}</Badge> : null
                   }
                 </Link>
               </Nav>

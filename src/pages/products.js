@@ -20,8 +20,9 @@ import FilterBar from '@/components/FilterBar';
 import SortBar from '@/components/SortBar';
 import Featured from '@/components/Featured';
 import Pagination from '@/components/Pagination';
+import Footer from '@/components/Footer';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 9;
 
 const ProductsPage = () => {
   const cart = useContext(CartContext);
@@ -41,6 +42,7 @@ const ProductsPage = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   const renderData = () => {
@@ -59,11 +61,13 @@ const ProductsPage = () => {
       <NavigationBar />
       <Container className="my-5">
         <Row>
+          <Col><Featured /></Col>
+        </Row>
+        <Row className="pt-3">
           <Col xs={3} className="d-none d-md-flex">
             <FilterBar />
           </Col>
           <Col>
-            <Featured />
             <SortBar />
             <div className="products-container">
               {renderData()}
@@ -78,6 +82,7 @@ const ProductsPage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </React.Fragment>
   );
 };

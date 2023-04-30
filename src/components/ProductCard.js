@@ -54,7 +54,7 @@ function ProductCard({ item }) {
             src={item.image}
             height={200}
             width={320}
-            alt={item.image}
+            alt={item.name}
             className="card-img"
           />
         <Card.Title className="d-flex justify-content-between">
