@@ -61,6 +61,7 @@ const ProductsTable = ({ products }) => {
         <td>{product.price}</td>
         <td>{product.unit}</td>
         <td>{product.quantity}</td>
+        <td>{product.stockunit}</td>
       </tr>
     ));
 
@@ -79,6 +80,13 @@ const ProductsTable = ({ products }) => {
                 </Button>
               </Link>
             </div>
+            <div className="d-flex justify-content-end mb-3">
+              <Link href="/admin/stockunit">
+                <Button>
+                  Add Stock Unit
+                </Button>
+              </Link>
+            </div>
             <Form.Control
               type="text"
               placeholder="Search products"
@@ -94,6 +102,7 @@ const ProductsTable = ({ products }) => {
                   <th onClick={() => handleSort("price")}>Price</th>
                   <th onClick={() => handleSort("unit")}>Unit</th>
                   <th onClick={() => handleSort("quantity")}>Quantity</th>
+                  <th onClick={() => handleSort("stockunit")}>Stock Unit</th>
                 </tr>
               </thead>
               <tbody>{tableRows}</tbody>
