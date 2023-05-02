@@ -27,9 +27,22 @@ export async function getServerSideProps(context) {
   const data = jwt.verify(cookies?.token, process.env.APPSECRET);
 
   if (data) {
+    let redirect = '/';
+    if (data.userType === 3) {
+      redirect = '/admin';
+    }
+
+    if (data.userType === 2) {
+      redirect = '/admin';
+    }
+
+    if (data.userType === 1) {
+      redirect = '/products';
+    }
+
     return {
       props: {
-        redirect: data.isAdmin ? '/admin' : '/user'
+        redirect
       },
     };
   }

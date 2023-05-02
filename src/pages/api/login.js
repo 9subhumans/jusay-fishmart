@@ -13,10 +13,10 @@ export default async function handler(req, res) {
     if (result) {
       const token = jwt.sign({
         id,
-        isAdmin: userType === 2,
         name,
         firstName,
         lastName,
+        userType,
       }, process.env.APPSECRET);
 
       res.status(200).send({ token });

@@ -10,7 +10,6 @@ const ContactUs = () => {
     <Head>
       <title>Jusay Fishmart | Contact Us</title>
     </Head>
-    <NavigationBar />
       <NavigationBar />
       <Container className="my-5">
         <h1>Contact Us</h1>
