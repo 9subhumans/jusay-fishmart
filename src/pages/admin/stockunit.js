@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {formik, Field} from 'formik';
+import jwt from 'jsonwebtoken';
 
 function ProductForm() {
   const [products, setProducts] = useState([]);
@@ -77,6 +78,35 @@ function ProductForm() {
       </Card>
     </Container>
   )
+}
+
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const { token } = req.cookies;
+
+  try {
+    const decoded = jwt.verify(token, process.env.APPSECRET);
+
+    if (!decoded) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {}
+    };
+  } catch {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default ProductForm;

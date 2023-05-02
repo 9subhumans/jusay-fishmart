@@ -1,4 +1,5 @@
 import { pool } from "config/db";
+import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
   switch (req.method) {
@@ -32,17 +33,26 @@ const getProducts = async (req, res) => {
 
 const saveProduct = async (req, res) => {
   try {
-    const { image, name, description, price, unit, quantity } = req.body;  
+    const { image, name, description, price, unit, quantity } = req.body;
+    const { token } = req.cookies;
+
+    if (!token) {
+      return res.status(401).send('Unauthorized');
+    }
+
+    const verified = jwt.verify(token, process.env.APPSECRET);
+
+    if (!verified) {
+      return res.status(401).send('Unauthorized');
+    }
 
     const result = await pool.query("INSERT INTO product SET ?", {
-
       image,
       name,
       description,
       price,
       unit,
       quantity,
-
     });
 
     return res.status(200).json({ ...req.body, id: result.insertId });

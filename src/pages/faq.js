@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { FaChevronDown } from "react-icons/fa";
 import { Accordion, Container } from "react-bootstrap";
 import { NavigationBar } from '@/components/NavigationBar'
+import Footer from '@/components/Footer';
 
 function FAQPage() {
   return (
@@ -11,8 +12,8 @@ function FAQPage() {
     </Head>
     <NavigationBar />
       <Container className="my-5">
-        <h1 className="text-center">Frequently Asked Questions</h1>
-        <Accordion defaultActiveKey="0" flush>
+        <h1 className="text-cente mb-5">Frequently Asked Questions</h1>
+        <Accordion className="mb-5" defaultActiveKey="0" flush>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
               <FaChevronDown className="me-2" />
@@ -70,6 +71,7 @@ function FAQPage() {
           </Accordion.Item>
         </Accordion>
       </Container>
+      <Footer /> 
     </>
   );
 }

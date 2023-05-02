@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { NavigationBar } from '@/components/NavigationBar'
+import Footer from '@/components/Footer';
 
 const ContactUs = () => {
   return (
@@ -10,6 +11,7 @@ const ContactUs = () => {
       <title>Jusay Fishmart | Contact Us</title>
     </Head>
     <NavigationBar />
+      <NavigationBar />
       <Container className="my-5">
         <h1>Contact Us</h1>
         <Row className="mt-4">
@@ -43,7 +45,7 @@ const ContactUs = () => {
           </Col>
         </Row>
       </Container>
-
+      <Footer />
     </>
   );
 };

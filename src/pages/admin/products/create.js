@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,7 +11,13 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { toBase64 } from '@/utils/file';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { toast, ToastContainer } from 'react-toastify';
+import jwt from 'jsonwebtoken';
+
+import AdminTemplate from '@/components/AdminTemplate';
+import { ToastContext } from '@/contexts/ToastContext';
 
 const fileTypes = ["JPG", "PNG", "WEBP"];
 const moneyRegExp = /^\$?[0-9]+(\.[0-9][0-9])?$/;
@@ -37,6 +43,8 @@ const initialValues = {
 };
 
 const AddProductForm = () => {
+  const toast = useContext(ToastContext);
+
   const handleImageChange = (file) => {
     setFile(file);
   }
@@ -45,16 +53,7 @@ const AddProductForm = () => {
     const response = await axios.post('/api/products', values);
     
     if (response.statusText === 'OK') {
-      toast.success('Product successfully created', {
-        position: "bottom-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.show('Product successfully created');
 
       setTimeout(() => {
         Router.push('/admin/products');
@@ -63,10 +62,9 @@ const AddProductForm = () => {
   }
 
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-      <Card className="py-5" style={{ width: '30rem' }}>
-        <Card.Body>
-          <Formik
+    <AdminTemplate size={5}>
+      <div className="p-5">
+        <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
@@ -195,21 +193,38 @@ const AddProductForm = () => {
               </FormikForm>
             )}
           </Formik>
-        </Card.Body>
-      </Card>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        pauseOnHover
-        theme="light"
-      />
-    </Container>
+      </div>
+    </AdminTemplate>
   )
+}
+
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const { token } = req.cookies;
+
+  try {
+    const decoded = jwt.verify(token, process.env.APPSECRET);
+
+    if (!decoded) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {}
+    };
+  } catch {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default AddProductForm;

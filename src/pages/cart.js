@@ -9,6 +9,8 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 import { NavigationBar } from '@/components/NavigationBar';
+import Footer from '@/components/Footer';
+import Featured from '@/components/Featured';
 import { CartContext } from '@/contexts/CartContext';
 
 const Cart = () => {
@@ -35,10 +37,10 @@ const Cart = () => {
   return (
     <>
       <Head>
-        <title>Jusay Fishmart | Cart</title>
+        <title>Cart | Jusay Fishmart</title>
       </Head>
       <NavigationBar />
-      <Container>
+      <Container className="mb-5">
         <Row>
           <Col>
             <h1 className="my-4">Cart</h1>
@@ -90,12 +92,14 @@ const Cart = () => {
                 </tr>
               </tbody>
             </Table>
-            <div className="d-flex justify-content-end">
-              <Button variant="primary">Place Order</Button>
+            <Featured />
+            <div className="d-flex justify-content-end mt-5">
+              <Button size="lg" variant="primary">Checkout</Button>
             </div>
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };
