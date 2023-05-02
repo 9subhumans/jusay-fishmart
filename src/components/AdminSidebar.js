@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Image, Nav } from 'react-bootstrap';
+import { FaAmazon } from 'react-icons/fa'
+
 
 const Sidebar = () => {
   return (
@@ -10,6 +12,8 @@ const Sidebar = () => {
           <Nav className="flex-column">
             <Nav.Link href="#">Home</Nav.Link>
             <Nav.Link href="/admin/products">Products</Nav.Link>
+            <Nav.Link href="/admin/transaction">Transaction log</Nav.Link>
+            <Nav.Link href="/admin/inventory">Inventory log</Nav.Link>
             <Nav.Link href="#">Contact</Nav.Link>
           </Nav>
         </Col>

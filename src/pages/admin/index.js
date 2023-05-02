@@ -3,9 +3,17 @@ import Head from 'next/head';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AdminSidebar from '@/components/AdminSidebar';
-import { Card } from 'react-bootstrap';
+import { Card, Table} from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+
+
+
+  const orders = [
+    { id: 1, product: 'Product 1', quantity: 2, price: 10.99 },
+    { id: 2, product: 'Product 2', quantity: 1, price: 7.99 },
+    { id: 3, product: 'Product 3', quantity: 3, price: 12.99 },
+  ]
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -41,6 +49,8 @@ const options = {
 const LineChartCard = () => {
   const key = 'line-chart-' + Math.floor(Math.random() * 1000);
 }
+
+
 
 function Admin() {
   return (
@@ -86,13 +96,31 @@ function Admin() {
               </Card.Body>
             </Card>
             <Card className="mb-3" style={{ height: '280px' }}>
-              <Card.Body>
-                <Card.Title>Latest Orders</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Widget</Card.Subtitle>
-                <Card.Text>
-                  Total New Customers: 50
-                </Card.Text>
-              </Card.Body>
+                <Card.Header>
+                  <Card.Title>Latest Orders</Card.Title>
+                </Card.Header> 
+                <Card.Body>
+                  <Table striped bordered hover responsive>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {orders.map((order) => (
+                        <tr key={order.id}>
+                          <td>{order.id}</td>
+                          <td>{order.product}</td>
+                          <td>{order.quantity}</td>
+                          <td>{order.price}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Card.Body>
             </Card>
           </Col>
           <Col className="pt-3" xs={4}>

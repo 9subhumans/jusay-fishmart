@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
@@ -15,6 +16,12 @@ import { ReactSVG } from 'react-svg';
 
 export function NavigationBar() {
   const cart = useContext(CartContext);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchQuery); // Do something with the search query
+  };
 
   return (
     <Navbar className="navbar navigationbar" expand="lg">
@@ -48,6 +55,19 @@ export function NavigationBar() {
               </Link>
             </div>
             <div className="d-flex align-items-center ms-auto">
+            <Form onSubmit={handleSearchSubmit} className="me-3">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <Button variant="outline-secondary" type="submit">
+                    Search
+                  </Button>
+                </InputGroup>
+              </Form>
               <Nav className="me-3">
                 <Link href="/cart">
                   <i className="bi bi-cart4" /> Cart {
