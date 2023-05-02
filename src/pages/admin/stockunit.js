@@ -50,19 +50,23 @@ function ProductForm() {
                   ))
                 }
               </Form.Select>
-          </Form.Group>
-          <Form.Label>Unit</Form.Label>
-                      <option value='KG'>Per Kilo</option>
-                      <option value='PC'>By Piece</option>
-                      <option value='BK'>Bucket</option>
-          <Form.Group className="mb-3">
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control type="number" name="productQuantity" />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Price</Form.Label>
-            <Form.Control type="money" name="productPrice" />
-          </Form.Group>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Unit</Form.Label>
+                <Form.Select placeholder="Select">
+                          <option value='KG'>Per Kilo</option>
+                          <option value='PC'>By Piece</option>
+                          <option value='BK'>Bucket</option>
+                </Form.Select> 
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Quantity / Stock unit</Form.Label>
+                <Form.Control type="number" name="productQuantity" />
+              </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Price</Form.Label>
+                  <Form.Control type="money" name="productPrice" />
+                </Form.Group>
           <div className="d-flex justify-content-end">
             <Button type="submit">
               Submit

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { FaChevronDown } from "react-icons/fa";
 import { Accordion, Container } from "react-bootstrap";
 import { NavigationBar } from '@/components/NavigationBar'
@@ -5,6 +6,9 @@ import { NavigationBar } from '@/components/NavigationBar'
 function FAQPage() {
   return (
     <>
+    <Head>
+      <title>Jusay Fishmart | FAQ</title>
+    </Head>
     <NavigationBar />
       <Container className="my-5">
         <h1 className="text-center">Frequently Asked Questions</h1>

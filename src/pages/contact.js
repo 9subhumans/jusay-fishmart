@@ -1,10 +1,14 @@
 import React from 'react';
+import Head from 'next/head';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { NavigationBar } from '@/components/NavigationBar'
 
 const ContactUs = () => {
   return (
     <>
+    <Head>
+      <title>Jusay Fishmart | Contact Us</title>
+    </Head>
     <NavigationBar />
       <Container className="my-5">
         <h1>Contact Us</h1>

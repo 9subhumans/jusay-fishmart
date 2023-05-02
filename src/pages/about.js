@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
 import { NavigationBar } from '@/components/NavigationBar'
@@ -6,6 +7,9 @@ import { NavigationBar } from '@/components/NavigationBar'
 const AboutUs = () => {
   return (
     <div>
+      <Head>
+        <title>Jusay Fishmart | About Us</title>
+      </Head>
       <NavigationBar />
     <Container className="py-5">
       <Row>

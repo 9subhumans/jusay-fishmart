@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useContext } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
@@ -33,6 +34,9 @@ const Cart = () => {
 
   return (
     <>
+      <Head>
+        <title>Jusay Fishmart | Cart</title>
+      </Head>
       <NavigationBar />
       <Container>
         <Row>
