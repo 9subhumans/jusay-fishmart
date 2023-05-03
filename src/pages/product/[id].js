@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-
 import { NavigationBar } from '@/components/NavigationBar';
 import { CartContext } from '@/contexts/CartContext';
 
@@ -40,14 +39,15 @@ const SingleProductPage = ({ data }) => {
             />
           </Col>
           <Col md={6}>
-            <h1>Fresh Salmon Fillet</h1>
+            <h1>{`${data.name}`}</h1>
             <p className="lead">{`${data.price} ${UNITS[data.unit]}`}</p>
             <hr />
             <p>{data.description}</p>
-            <div className="my-3">
+            <div className="my-4">
               <Button variant="secondary" onClick={handleQuantityDecrease}>-</Button>{' '}
               <span className="mx-2">{quantity}</span>
-              <Button variant="secondary" onClick={handleQuantityIncrease}>+</Button>
+              <Button classname={""} variant="secondary" onClick={handleQuantityIncrease}>+</Button>
+              <>Stocks:{`${data.stockunit}`}</>
             </div>
             <Button variant="primary" className="my-3">Add to Cart</Button>
           </Col>

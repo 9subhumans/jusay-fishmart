@@ -7,11 +7,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import { NavigationBar } from '@/components/NavigationBar';
 import Footer from '@/components/Footer';
 import Featured from '@/components/Featured';
 import { CartContext } from '@/contexts/CartContext';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 const Cart = () => {
   const cart = useContext(CartContext);
@@ -36,7 +39,7 @@ const Cart = () => {
 
   return (
     <>
-      <Head>
+    <Head>
         <title>Cart | Jusay Fishmart</title>
       </Head>
       <NavigationBar />
@@ -85,7 +88,7 @@ const Cart = () => {
                   </tr>
                 ))}
                 <tr>
-                  <td colSpan="4" className="text-right">
+                  <td colSpan="4" className="text-right"> 
                     Total
                   </td>
                   <td>₱{calculateTotal}</td>
@@ -94,7 +97,7 @@ const Cart = () => {
             </Table>
             <Featured />
             <div className="d-flex justify-content-end mt-5">
-              <Button size="lg" variant="primary">Checkout</Button>
+              <Button size="lg" variant="primary" href="./checkout">Checkout</Button>
             </div>
           </Col>
         </Row>
