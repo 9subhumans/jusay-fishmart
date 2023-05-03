@@ -23,20 +23,6 @@ function AccountForm() {
     confirmPassword: "",
 });
 
-  // useEffect(() => {
-  //   const execute = async () => {
-  //     try{
-  //       const response = await axios.get('/api/users');
-  //       setUsers(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   execute();
-  // }, []);
-
-
-
   const onSubmit = (values) => {
     try{
       const  response = axios.post('/api/users', values);

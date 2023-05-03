@@ -11,6 +11,7 @@ function FilterBar() {
           <div className="item">Squid</div>
           <div className="item">Shellfish</div>
           <div className="item">Convenience Seafood</div>
+          <div className="item">Marinated Seafood</div>
         </div>
       </div>
     </div>

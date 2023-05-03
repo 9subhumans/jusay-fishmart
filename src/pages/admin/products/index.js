@@ -92,10 +92,9 @@ const ProductsTable = ({ products }) => {
             {product.name}
           </Link>
         </td>
-        <td>{product.price}</td>
         <td>{product.unit}</td>
         <td>{product.quantity}</td>
-        <td>{product.stockunit}</td>
+        <td>{product.price}</td>
         <td style={{ width: 50 }}>
           <Button size="sm" variant="danger" type="button" onClick={() => handleDelete(product.id)}>
             <i class="bi bi-trash" />
@@ -132,11 +131,10 @@ const ProductsTable = ({ products }) => {
           <thead>
             <tr>
               <th onClick={() => handleSort("id")}>ID</th>
-              <th onClick={() => handleSort("name")}>Name</th>
-              <th onClick={() => handleSort("price")}>Price</th>
+              <th onClick={() => handleSort("name")}>Product Name</th>
               <th onClick={() => handleSort("unit")}>Unit</th>
               <th onClick={() => handleSort("quantity")}>Quantity</th>
-              <th onClick={() => handleSort("stockunit")}>Stock Unit</th>
+              <th onClick={() => handleSort("price")}>Unit Price</th>
               <th>Delete</th>
             </tr>
           </thead>

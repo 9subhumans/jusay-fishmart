@@ -1,5 +1,8 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import AdminSidebar from '@/components/AdminSidebar';
+import AdminTemplate from '@/components/AdminTemplate';
 
 const transactions = [
   { id: 1, date: '2022-05-01', description: 'Sale', amount: 100 },
@@ -9,7 +12,9 @@ const transactions = [
 
 const TransactionLog = () => {
   return (
-    <Table striped bordered hover>
+    <AdminTemplate size={10}>
+      <Table striped bordered hover>
+        
       <thead>
         <tr>
           <th>ID</th>
@@ -29,6 +34,7 @@ const TransactionLog = () => {
         ))}
       </tbody>
     </Table>
+    </AdminTemplate>
   );
 };
 

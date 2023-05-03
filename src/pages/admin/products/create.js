@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import Head from 'next/head';
 import Router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -62,139 +63,144 @@ const AddProductForm = () => {
   }
 
   return (
-    <AdminTemplate size={5}>
-      <div className="p-5">
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {(formik) => (
-              <FormikForm>
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Image</Form.Label>
-                    <FileUploader
-                      name="image"
-                      types={fileTypes}
-                      handleChange={async (file) => {
-                        const selected = await toBase64(file);
-                        formik.setFieldValue('image', selected);
-                      }}
-                    />
-
-                    {
-                      formik.values?.image && (
-                        <div className="d-flex justify-content-center">
-                          <Image
-                            src={formik.values.image}
-                            alt="Product image"
-                            width={150}
-                            height={120}
-                          />
-                        </div>
-                      )
-                    }
+    <>
+      <Head>
+        <title>Admin | Products</title>
+      </Head>
+        <AdminTemplate size={5}>
+          <div className="p-5">
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {(formik) => (
+                  <FormikForm>
                     <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Image</Form.Label>
+                        <FileUploader
+                          name="image"
+                          types={fileTypes}
+                          handleChange={async (file) => {
+                            const selected = await toBase64(file);
+                            formik.setFieldValue('image', selected);
+                          }}
+                        />
 
+                        {
+                          formik.values?.image && (
+                            <div className="d-flex justify-content-center">
+                              <Image
+                                src={formik.values.image}
+                                alt="Product image"
+                                width={150}
+                                height={120}
+                              />
+                            </div>
+                          )
+                        }
+                        <div>
+
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Product Name</Form.Label>
-                    <Field
-                      as={Form.Control}
-                      value={formik.values.name}
-                      onChange={formik.handleChange}
-                      type="text"
-                      name="name"
-                    />
-                    <Form.Control.Feedback className={!formik.values.name ? 'd-block' : ''} type="invalid">
-                      {formik.errors.name}
-                    </Form.Control.Feedback>
-                  </div>
-                </div>
+                    <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Product Name</Form.Label>
+                        <Field
+                          as={Form.Control}
+                          value={formik.values.name}
+                          onChange={formik.handleChange}
+                          type="text"
+                          name="name"
+                        />
+                        <Form.Control.Feedback className={!formik.values.name ? 'd-block' : ''} type="invalid">
+                          {formik.errors.name}
+                        </Form.Control.Feedback>
+                      </div>
+                    </div>
 
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Unit</Form.Label>
-                    <Field
-                      as={Form.Select}
-                      value={formik.values.unit}
-                      name="unit"
-                      onChange={formik.handleChange}
-                    >
-                      <option value='KG'>Per Kilo</option>
-                      <option value='PC'>By Piece</option>
-                      <option value='BK'>Bucket</option>
-                    </Field>
-                    <Form.Control.Feedback className={!formik.values.unit ? 'd-block' : ''} type="invalid">
-                      {formik.errors.unit}
-                    </Form.Control.Feedback>
-                  </div>
-                </div>
+                    <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Unit</Form.Label>
+                        <Field
+                          as={Form.Select}
+                          value={formik.values.unit}
+                          name="unit"
+                          onChange={formik.handleChange}
+                        >
+                          <option value='KG'>Per Kilo</option>
+                          <option value='PC'>By Piece</option>
+                          <option value='BK'>Bucket</option>
+                        </Field>
+                        <Form.Control.Feedback className={!formik.values.unit ? 'd-block' : ''} type="invalid">
+                          {formik.errors.unit}
+                        </Form.Control.Feedback>
+                      </div>
+                    </div>
 
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Price</Form.Label>
-                    <Field
-                      as={Form.Control}
-                      type="number"
-                      name="price"
-                      value={formik.values.price}
-                      onChange={formik.handleChange}
-                    />
-                    <Form.Control.Feedback className={!formik.values.price ? 'd-block' : ''} type="invalid">
-                      {formik.errors.price}
-                    </Form.Control.Feedback>
-                  </div>
-                </div>
+                    <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Price</Form.Label>
+                        <Field
+                          as={Form.Control}
+                          type="number"
+                          name="price"
+                          value={formik.values.price}
+                          onChange={formik.handleChange}
+                        />
+                        <Form.Control.Feedback className={!formik.values.price ? 'd-block' : ''} type="invalid">
+                          {formik.errors.price}
+                        </Form.Control.Feedback>
+                      </div>
+                    </div>
 
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Quantity</Form.Label>
-                    <Field
-                      as={Form.Control}
-                      type="number"
-                      name="quantity"
-                      value={formik.values.quantity}
-                      onChange={formik.handleChange}
-                    />
-                  </div>
-                </div>
+                    <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Quantity</Form.Label>
+                        <Field
+                          as={Form.Control}
+                          type="number"
+                          name="quantity"
+                          value={formik.values.quantity}
+                          onChange={formik.handleChange}
+                        />
+                      </div>
+                    </div>
 
-                <div>
-                  <div className="form-group mb-4">
-                    <Form.Label>Product Description</Form.Label>
-                    <Form.Control
-                      value={formik.values.description}
-                      onChange={formik.handleChange}
-                      as="textarea"
-                      name="description"
-                    />
-                    <Form.Control.Feedback className={!formik.values.description ? 'd-block' : ''} type="invalid">
-                      {formik.errors.description}
-                    </Form.Control.Feedback>
-                  </div>
-                </div>
+                    <div>
+                      <div className="form-group mb-4">
+                        <Form.Label>Product Description</Form.Label>
+                        <Form.Control
+                          value={formik.values.description}
+                          onChange={formik.handleChange}
+                          as="textarea"
+                          name="description"
+                        />
+                        <Form.Control.Feedback className={!formik.values.description ? 'd-block' : ''} type="invalid">
+                          {formik.errors.description}
+                        </Form.Control.Feedback>
+                      </div>
+                    </div>
 
-                <div className="d-flex justify-content-between">
-                <Link href="/admin/products">
-                  <Button variant="default">
-                    Back to Products
-                  </Button>
-                </Link>
-                <Button type="submit" disabled={!formik.isValid}>
-                  Submit
-                </Button>
-                </div>
-              </FormikForm>
-            )}
-          </Formik>
-      </div>
-    </AdminTemplate>
+                    <div className="d-flex justify-content-between">
+                    <Link href="/admin/products">
+                      <Button variant="default">
+                        Back to Products
+                      </Button>
+                    </Link>
+                    <Button type="submit" disabled={!formik.isValid}>
+                      Submit
+                    </Button>
+                    </div>
+                  </FormikForm>
+                )}
+              </Formik>
+          </div>
+        </AdminTemplate>
+    </>
   )
 }
 
