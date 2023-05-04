@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useContext } from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import Badge from 'react-bootstrap/Badge';
@@ -97,7 +98,9 @@ const Cart = () => {
             </Table>
             <Featured />
             <div className="d-flex justify-content-end mt-5">
-              <Button size="lg" variant="primary" href="./checkout">Checkout</Button>
+              <Link href="/checkout">
+                <Button size="lg" variant="primary">Checkout</Button>
+              </Link>
             </div>
           </Col>
         </Row>

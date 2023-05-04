@@ -1,22 +1,28 @@
-import { createContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import jwt from 'jsonwebtoken';
+import { createContext, useState,  useEffect } from 'react';
 
 export const AuthContext = createContext({
   isAuthenticated: false,
-  isAdmin: false,
+  id: 0,
+  name: '',
+  firstName: '',
+  lastName: '',
+  userType: 1,
   token: null
 });
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     isAuthenticated: false,
-    isAdmin: false,
+    id: 0,
+    name: '',
+    firstName: '',
+    lastName: '',
+    userType: 1,
     token: null
   });
 
   return (
-    <AuthContext.Provider value={{ ...auth }}>
+    <AuthContext.Provider value={{ ...auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   )

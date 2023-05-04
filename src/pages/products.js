@@ -14,6 +14,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FaShoppingCart } from 'react-icons/fa';
 import { CartContext } from '@/contexts/CartContext';
+import { AuthContext } from '@/contexts/AuthContext';
 import { NavigationBar } from '@/components/NavigationBar'
 import ProductCard from '@/components/ProductCard';
 import FilterBar from '@/components/FilterBar';
@@ -21,10 +22,13 @@ import SortBar from '@/components/SortBar';
 import Featured from '@/components/Featured';
 import Pagination from '@/components/Pagination';
 import Footer from '@/components/Footer';
+import jwt from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 
 const ITEMS_PER_PAGE = 9;
 
-const ProductsPage = () => {
+const ProductsPage = (props) => {
+  const { setAuth, ...auth } = useContext(AuthContext);
   const cart = useContext(CartContext);
 
   const [products, setProducts] = useState([]);
@@ -36,9 +40,14 @@ const ProductsPage = () => {
 
       setProducts(response.data);
     }
+
+    if (props.isAuthenticated) {
+      setAuth(props)
+    }
+
     execute();
   },
-  []);
+  [props.isAuthenticated, setAuth]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -52,6 +61,8 @@ const ProductsPage = () => {
       <ProductCard key={item.id} item={item} />
     ));
   };
+
+  console.log(auth);
 
   return (
     <React.Fragment>
@@ -86,5 +97,28 @@ const ProductsPage = () => {
     </React.Fragment>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const { token } = req.cookies;
+
+  try {
+    const props = jwt.verify(token, process.env.APPSECRET);
+
+    if (!props) {
+      return { props: {
+        isAuthenticated: false
+      } };
+    }
+
+    return { props: { ...props, isAuthenticated: true } };
+  } catch {
+    return {
+      props: {
+        isAuthenticated: false
+      }
+    };
+  }
+}
 
 export default ProductsPage;

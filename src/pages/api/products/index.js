@@ -55,6 +55,8 @@ const saveProduct = async (req, res) => {
       quantity,
     });
 
+    console.log(result);
+
     return res.status(200).json({ ...req.body, id: result.insertId });
   } catch (error) {
     return res.status(500).json({ message: error.message });

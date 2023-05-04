@@ -14,8 +14,11 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { faBars  } from '@fortawesome/free-solid-svg-icons';
 import { ReactSVG } from 'react-svg';
 
+import { AuthContext } from '@/contexts/AuthContext';
+
 export function NavigationBar() {
   const cart = useContext(CartContext);
+  const auth = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchSubmit = (e) => {
@@ -26,7 +29,7 @@ export function NavigationBar() {
   return (
     <Navbar className="navbar navigationbar" expand="lg">
       <Container>
-        <Link href="/introduction">
+        <Link href="/">
           <Navbar.Brand>
             <Image
               width={75}
@@ -55,7 +58,7 @@ export function NavigationBar() {
               </Link>
             </div>
             <div className="d-flex align-items-center ms-auto">
-            <Form onSubmit={handleSearchSubmit} className="me-3">
+            <Form onSubmit={handleSearchSubmit} className="me-5">
                 <InputGroup>
                   <Form.Control
                     type="text"
@@ -68,6 +71,19 @@ export function NavigationBar() {
                   </Button>
                 </InputGroup>
               </Form>
+              <Nav className="me-3">
+                {
+                  auth.isAuthenticated ? (
+                    <Link href={`/orders/${auth.id}`}>
+                      {auth.firstName}
+                    </Link>
+                  ) : (
+                    <Link href="/login">
+                      Login
+                    </Link>
+                  )
+                }
+              </Nav>
               <Nav className="me-3">
                 <Link href="/cart">
                   <i className="bi bi-cart4" /> Cart {
