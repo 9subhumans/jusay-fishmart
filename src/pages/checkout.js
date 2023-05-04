@@ -63,6 +63,7 @@ const CheckoutForm = () => {
       toast.show('Order successful!');
       
       setTimeout(() => {
+        localStorage.setItem('cart', []);
         Router.push('/orders');
       }, 500)
     }
