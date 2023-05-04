@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import Link from 'next/link';
 import { Container, Row, Col, Image, Nav, Button } from 'react-bootstrap';
 import { FaAmazon } from 'react-icons/fa'

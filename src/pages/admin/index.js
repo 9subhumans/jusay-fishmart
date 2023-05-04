@@ -11,9 +11,9 @@ import AdminTemplate from '@/components/AdminTemplate';
 
 
   const orders = [
-    { id: 1, product: 'Product 1', quantity: 2, price: 10.99 },
-    { id: 2, product: 'Product 2', quantity: 1, price: 7.99 },
-    { id: 3, product: 'Product 3', quantity: 3, price: 12.99 },
+    { id: 1, product: 'Product 1', quantity: 2, price: 10.99, date: "05-04-2023" },
+    { id: 2, product: 'Product 2', quantity: 1, price: 7.99, date: "05-04-2023" },
+    { id: 3, product: 'Product 3', quantity: 3, price: 12.99, date: "05-04-2023" },
   ]
 
 const data = {
@@ -115,6 +115,7 @@ function Admin(props) {
                           <td>{order.product}</td>
                           <td>{order.quantity}</td>
                           <td>{order.price}</td>
+                          <td>{order.date}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -138,7 +139,7 @@ export async function getServerSideProps(context) {
     if (!decoded) {
       return {
         redirect: {
-          destination: '/login',
+          destination: '/LogIn',
           permanent: false,
         },
       };
@@ -150,7 +151,7 @@ export async function getServerSideProps(context) {
   } catch {
     return {
       redirect: {
-        destination: '/login',
+        destination: '/LogIn',
         permanent: false,
       },
     };

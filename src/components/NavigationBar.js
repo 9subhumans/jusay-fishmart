@@ -78,7 +78,7 @@ export function NavigationBar() {
                       {auth.firstName}
                     </Link>
                   ) : (
-                    <Link href="/login">
+                    <Link href="/LogIn">
                       Login
                     </Link>
                   )
