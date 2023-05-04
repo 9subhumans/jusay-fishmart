@@ -16,7 +16,11 @@ const getOrders = async (req, res) => {
   try {
     const { total, userId, paymentmethod } = req.body;
 
-    const result = await pool.query("SELECT * FROM jusay_fishport_db.order INNER JOIN jusay_fishport_db.orderDetail");
+    const result = await pool.query(`
+      SELECT t1.id, t1.total, t1.userId, t1.paymentmethod, t1.shipto_addres, t1.shipto_city, t1.shipto_state, t1.shipto_zip, t1.createdAt, t2.productId, t2.qty, t2.subtotal, t2.status
+      FROM jusay_fishport_db.order t1
+      LEFT JOIN jusay_fishport_db.orderDetail t2 ON t1.id=t2.orderId;
+    `);
 
     return res.status(200).json(result);
   } catch (error) {

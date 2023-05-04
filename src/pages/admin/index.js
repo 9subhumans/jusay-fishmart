@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo, useState, useEffect, useContext } from "react";
+import axios from 'axios';
 import Head from 'next/head';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -52,6 +53,59 @@ const LineChartCard = () => {
 }
 
 function Admin(props) {
+  const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await axios.get('/api/products');
+
+      setProducts(response.data);
+    }
+
+    const getOrders = async () => {
+      const response = await axios.get('/api/orders');
+
+      setOrders(response.data);
+    }
+
+    getProducts();
+    getOrders();
+  },
+  []);
+
+  const orderCount = useMemo(() => {
+    const uniqueIds = {};
+
+    orders.forEach(order => {
+      if (!uniqueIds[order.id]) {
+        uniqueIds[order.id] = 1;
+      }
+      else {
+        uniqueIds[order.id]++;
+      }
+    });
+
+    return Object.keys(uniqueIds).length;
+  }, [orders]);
+
+  const totalSales = useMemo(() => {
+    const result = {};
+  
+    orders.forEach((obj) => {
+      const id = obj.id;
+      result[id] = obj.total;
+    });
+    
+    let sum = 0;
+
+    for (let i = 0; i < Object.values(result).length; i++) {
+      sum += Object.values(result)[i];
+    }
+
+    return  sum;
+  }, [orders]);
+
   return (
     <>
       <Head>
@@ -64,7 +118,7 @@ function Admin(props) {
                 <Col xs={4}>
                   <Card>
                     <Card.Body>
-                      <Card.Title>₱0.00</Card.Title>
+                      <Card.Title>{`₱${totalSales}`}</Card.Title>
                       <Card.Text>Total Sales</Card.Text>
                     </Card.Body>
                   </Card>
@@ -72,7 +126,7 @@ function Admin(props) {
                 <Col xs={4}>
                   <Card>
                     <Card.Body>
-                    <Card.Title>0</Card.Title>
+                    <Card.Title>{orderCount}</Card.Title>
                     <Card.Text>Total Orders</Card.Text>
                     </Card.Body>
                   </Card>
@@ -80,7 +134,7 @@ function Admin(props) {
                 <Col xs={4}>
                   <Card>
                     <Card.Body>
-                    <Card.Title>0</Card.Title>
+                    <Card.Title>{products.length}</Card.Title>
                       <Card.Text>Total Products</Card.Text>
                     </Card.Body>
                   </Card>
@@ -132,7 +186,7 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const { token } = req.cookies;
 
-  try {
+try {
     const decoded = jwt.verify(token, process.env.APPSECRET);
 
     if (!decoded) {
