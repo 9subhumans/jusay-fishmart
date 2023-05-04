@@ -59,7 +59,7 @@ function Admin(props) {
       </Head>
         <AdminTemplate size={10}>
           <Row>
-            <Col xs={7} className="pt-3">
+            <Col xs={11} className="pt-3">
               <Row className="mb-3">
                 <Col xs={4}>
                   <Card>
@@ -86,8 +86,7 @@ function Admin(props) {
                   </Card>
                 </Col>
               </Row>
-
-              <Card className="mb-3">
+              <Card className="mb-4">
                 <Card.Body>
                   <Card.Title>Sales</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">Monthly Sales</Card.Subtitle>
@@ -102,9 +101,11 @@ function Admin(props) {
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <th>Customer</th>
+                        <th></th>
+                        <th>Total Cost</th>
+                        <th>Date</th>
+                        
                       </tr>
                     </thead>
                     <tbody>

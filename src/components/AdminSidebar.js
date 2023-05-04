@@ -14,7 +14,6 @@ const Sidebar = () => {
               <Link className="nav-link" href="/admin/products">Products</Link>
               <Link className="nav-link" href="/admin/transaction">Transaction Log</Link>
               <Link className="nav-link" href="/admin/inventory">Inventory Log</Link>
-              <Link className="nav-link" href="#">Contact</Link>
             </Nav>
 
           </Col>
