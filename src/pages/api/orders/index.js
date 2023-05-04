@@ -63,13 +63,27 @@ const saveOrder = async (req, res) => {
       cash: ''
     });
 
-    const orderItems = items.map((i) => ({
-      ...i,
-      orderId: order.insertId,
-      status: 0
-    }));
+    const orderItems = items.map(({
+      productId,
+      qty,
+      subtotal,
+    }) => ([
+      productId,
+      order.insertId,
+      qty,
+      subtotal,
+      0
+    ]));
 
-    const orderDetails = await pool.query('INSERT INTO orderDetail SET ?', [ orderItems ]);
+    const orderDetails = await pool.query(`
+      INSERT INTO orderDetail (
+        productId,
+        orderId,
+        qty,
+        subtotal,
+        status
+      ) VALUES ?
+    `, [orderItems]);
 
     return res.status(200).json({ message: 'Order successful' });
   } catch (error) {

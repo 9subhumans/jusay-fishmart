@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
+import Router from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -14,8 +15,11 @@ import Head from 'next/head';
 import Featured from '@/components/Featured';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
+import { ToastContext } from '@/contexts/ToastContext';
 
 const CheckoutForm = () => {
+  const toast = useContext(ToastContext);
+
   const [form, setForm] = useState({
       firstName: "",
       lastName: "",
@@ -53,7 +57,15 @@ const CheckoutForm = () => {
       phoneNumber,
       paymentmethod,
       items
-    })
+    });
+
+    if (response.statusText === 'OK') {
+      toast.show('Order successful!');
+      
+      setTimeout(() => {
+        Router.push('/orders');
+      }, 500)
+    }
   }
 
   return (
@@ -76,7 +88,7 @@ const CheckoutForm = () => {
                 state: "",
                 zip: "",
                 phoneNumber: "",
-                paymentmethod: "",
+                paymentmethod: "Cash on Delivery",
               }}
               validationSchema={Yup.object({
                 firstName: Yup.string().required('Required'),
